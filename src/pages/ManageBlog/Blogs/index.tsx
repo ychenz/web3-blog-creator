@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Typography, Button, Input, Checkbox, Radio, Space, Form, Table } from "antd";
 import { Navigate, useParams, useNavigate } from "react-router";
-import { getLighthouseURL, getMaskedWalletAddress } from "../../../helpers";
+import {
+    getLighthouseURL,
+    getMaskedWalletAddress,
+    getEncryptedLighthouseURL,
+} from "../../../helpers";
 import { getBlogSites, getMembershipTier, createBlogRequest, getBlogs } from "../../../api";
 import { useMutation, useQuery } from "react-query";
 import { useMoralis } from "react-moralis";
@@ -34,11 +38,10 @@ export const Blogs = (): React.ReactElement => {
         () => getMembershipTier(creatorSiteId || null)
     );
 
-    const {
-        data: existingBlogs,
-        status: getBlogsStatus,
-        refetch: refetchBlogs,
-    } = useQuery(["blogs", creatorSiteId], () => getBlogs(creatorSiteId));
+    const { data: existingBlogs, status: getBlogsStatus } = useQuery(
+        ["blogs", creatorSiteId],
+        () => getBlogs(creatorSiteId)
+    );
 
     const { mutate: createBlogMutate, status: createBlogMutateStatus } = useMutation({
         mutationFn: createBlogRequest,
@@ -68,8 +71,6 @@ export const Blogs = (): React.ReactElement => {
             }
         }
     }, [isWeb3Enabled, existingBlogs]);
-
-    console.log("blogs: ", blogs);
 
     /**
      * Callbacks
@@ -114,9 +115,18 @@ export const Blogs = (): React.ReactElement => {
                             title: "Blog URL",
                             dataIndex: "blogCid",
                             key: "blogCid",
-                            render: (blogCid: string) => (
-                                <a href={getLighthouseURL(blogCid)} target="_blank">
-                                    {getLighthouseURL(blogCid)}
+                            render: (blogCid: string, record) => (
+                                <a
+                                    href={
+                                        record.creatorMembershipTierId
+                                            ? getEncryptedLighthouseURL(blogCid)
+                                            : getLighthouseURL(blogCid)
+                                    }
+                                    target="_blank"
+                                >
+                                    {record.creatorMembershipTierId
+                                        ? getEncryptedLighthouseURL(blogCid)
+                                        : getLighthouseURL(blogCid)}
                                 </a>
                             ),
                         },
@@ -173,7 +183,7 @@ export const Blogs = (): React.ReactElement => {
                 </Form.Item>
 
                 <Form.Item
-                    label="Membership Tier Description"
+                    label="Monetization"
                     name="isPaidBlog"
                     rules={[
                         {
@@ -194,7 +204,13 @@ export const Blogs = (): React.ReactElement => {
                 </Form.Item>
 
                 {isPaidBlog ? (
-                    <Form.Item label="Subscription tier" name="creatorMemberShipTierId">
+                    <Form.Item
+                        label="Subscription tier"
+                        name="creatorMemberShipTierId"
+                        rules={[
+                            { required: true, message: "Please select required subscription!" },
+                        ]}
+                    >
                         <Radio.Group>
                             <Space direction="vertical">
                                 {membershipTiers?.map((tier) => (
@@ -208,7 +224,7 @@ export const Blogs = (): React.ReactElement => {
                     </Form.Item>
                 ) : null}
 
-                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                <Form.Item wrapperCol={{ span: 16 }}>
                     <Button
                         type="primary"
                         htmlType="submit"

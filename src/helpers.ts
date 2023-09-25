@@ -5,3 +5,7 @@ export const getMaskedWalletAddress = (address: string) => {
 export const getLighthouseURL = (siteCid: string) => {
     return `https://gateway.lighthouse.storage/ipfs/${siteCid}`;
 };
+
+export const getEncryptedLighthouseURL = (fileCid: string) => {
+    return `https://decrypt.mesh3.network/${fileCid}`;
+};

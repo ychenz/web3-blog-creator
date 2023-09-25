@@ -155,7 +155,7 @@ export const Memberships = (): React.ReactElement => {
                     <Input type="number" />
                 </Form.Item>
 
-                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                <Form.Item wrapperCol={{ span: 16 }}>
                     <Button
                         type="primary"
                         htmlType="submit"
