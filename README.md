@@ -10,6 +10,10 @@ Make it easy for everyday people to create & host their blogs on Web3 with 1 cli
 4. Your data will be forever safe because it is hosted on a decentralized blockchain.
 5. Censor free. No one can ever take down your blog.
 
+## Project Presentation
+
+https://docs.google.com/presentation/d/1r1rB2AG8jCJ3d0qMdu8YVyJKUsXD87uWaa7hzpEY-UQ/edit?usp=sharing
+
 ## Project Design
 
 ![image](https://github.com/ychenz/web3-blog-creator/assets/10768904/732ea363-d3d9-4d17-8b96-689b1d7385f0)
