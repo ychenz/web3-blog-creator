@@ -1,6 +1,8 @@
 # Web3 Blog creator
 
-Make it easy for everyday people to create & host their blogs on Web3 with 1 click. 
+Make it easy for everyday people to create & host their blogs on Web3 a simple clicks, no technical knowledge required.
+
+This is a project developed for the [Encode club Open Data Hack Hackathon](https://www.encode.club/open-data-hack).
 
 ## Features for creators/influencers
 
