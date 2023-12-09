@@ -2,7 +2,9 @@
 
 Make it easy for everyday people to create & host their blogs on Web3 a simple clicks, no technical knowledge required.
 
-This is a project developed for the [Encode club Open Data Hack Hackathon](https://www.encode.club/open-data-hack).
+This is an award-winning project developed for the [Encode club Open Data Hack Hackathon](https://www.encode.club/open-data-hack).
+
+[Link to the award blog post](https://www.blog.encode.club/open-data-hack-powered-by-filecoin-prizewinners-and-summary-dcdf52059867)
 
 ## Features for creators/influencers
 
