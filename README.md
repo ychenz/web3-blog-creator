@@ -18,6 +18,9 @@ This is an award-winning project developed for the [Encode club Open Data Hack H
 
 https://docs.google.com/presentation/d/1r1rB2AG8jCJ3d0qMdu8YVyJKUsXD87uWaa7hzpEY-UQ/edit?usp=sharing
 
+### Demo
+https://www.loom.com/share/f818256f55aa455a870be69260978d15?sid=07a974cc-742b-407a-878a-2bafbcd27ac7
+
 ## Project Design
 
 ![image](https://github.com/ychenz/web3-blog-creator/assets/10768904/732ea363-d3d9-4d17-8b96-689b1d7385f0)
